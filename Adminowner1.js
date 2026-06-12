@@ -1,4 +1,4 @@
-const products = [
+ const products = [
     { name: 'Indomine Chicken', sku: 'IDC-300-CT', price: 1300, stock: 10, status: 'In stock', icon: '🍜' },
     { name: 'Milo 400g',        sku: 'MIL-400-PK', price: 6000, stock: 7,  status: 'In stock', icon: '🥫' },
     { name: 'Coca-cola 50cl',   sku: 'COK-050-CT', price: 2350, stock: 0,  status: 'Out of stock', icon: '🥤' },
@@ -40,6 +40,9 @@ const products = [
   }
 
   function render() {
+    const alertItems = products.filter(p => p.status === 'Low stock' || p.status === 'Out of stock' || p.status === 'Expired').length;
+    document.getElementById('alertCount').textContent = alertItems;
+
     const search = document.getElementById('productSearch').value.toLowerCase();
     const statusF = document.getElementById('statusFilter').value;
 
